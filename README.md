@@ -1,4 +1,4 @@
-# jsstl-patterns
+# Studying Turing patters with jSSTL.
 
 This code shows how [jSSTL](https://github.com/Quanticol/jsstl/) can be used to study pattern formation in a reaction-diffusion system. These patterns are formalised in terms of spatial and spatio-temporal properties in SSTL.
 
