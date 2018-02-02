@@ -1,0 +1,25 @@
+const Tf = 40;
+const k = 0;
+const dmax = 11;
+
+parameter t in [0,11];
+parameter d in [0,1.5];
+				
+variable B;
+variable S;
+
+formula phiB = { B > k };
+formula phiS = { S > k };
+formula phiTest = <<>>[ 0 , d ] phiB;
+
+
+formula phid0 = (<<>>[ 0 , d ] phiB)&(<<>>[ 0 , d ] phiS);			
+formula phi1 = \G[0,Tf] phid0;			
+formula phit0 = \F[0,t] (phiB & phiS);	
+formula phi2 = \G[0,30] phit0;			
+
+formula phi3 =  [[]] [0,dmax] phi1;
+formula phi4 =  [[]] [0,dmax] phi2;
+
+formula phi5 = 	\G[0,30] (phid0 | phit0); 
+formula phi6 = 	[[]] [0,dmax] phi5;
