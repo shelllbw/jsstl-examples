@@ -1,25 +1,17 @@
 package eu.quatincol.jsstl.examples;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashMap;
 
-import org.jsstl.core.formula.Formula;
-import org.jsstl.core.formula.Signal;
-import org.jsstl.core.formula.SignalStatistics;
-import org.jsstl.core.formula.jSSTLScript;
-import org.jsstl.core.monitor.SpatialBooleanSignal;
-import org.jsstl.core.monitor.SpatialQuantitativeSignal;
-import org.jsstl.core.space.GraphModel;
-import org.jsstl.io.FolderSignalReader;
-import org.jsstl.io.TxtSpatialBoolSat;
-import org.jsstl.io.TxtSpatialQuantSat;
-import org.jsstl.io.TxtSpatialQuantSignal;
-import org.jsstl.util.signal.BooleanSignal;
-import org.jsstl.util.signal.QuantitativeSignal;
-
-
+import eu.quanticol.jsstl.dsl.ScriptLoader;
+import eu.quanticol.jsstl.formula.Formula;
+import eu.quanticol.jsstl.formula.Signal;
+import eu.quanticol.jsstl.formula.jSSTLScript;
+import eu.quanticol.jsstl.io.TxtSpatialBoolSat;
+import eu.quanticol.jsstl.io.TxtSpatialQuantSat;
+import eu.quanticol.jsstl.monitor.SpatialBooleanSignal;
+import eu.quanticol.jsstl.monitor.SpatialQuantitativeSignal;
+import eu.quanticol.jsstl.space.GraphModel;
 import matlabcontrol.MatlabConnectionException;
 import matlabcontrol.MatlabInvocationException;
 import matlabcontrol.MatlabProxy;
@@ -44,8 +36,10 @@ public class ReactionDiffusionSystemMatlab {
 
 		// /// %%%%%% PROPERTY %%%%%%% /////////////////////////		
 		// loading the formulas files
-		jSSTLScript script = new jSSTLPatternScript();
-		String[] formulae = script.getFormulae(); 
+		//jSSTLScript script = new jSSTLPatternScript();
+		ScriptLoader loader  = new ScriptLoader();
+        jSSTLScript script = loader.load("data/patternformulas.sstl");
+        String[] formulae = script.getFormulae(); 
 		
 		// Printing the list of formulas. The formulas are memorized in the alphabetic order
 		System.out.println(Arrays.toString( formulae )); 

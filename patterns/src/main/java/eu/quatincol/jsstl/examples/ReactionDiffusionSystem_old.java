@@ -6,24 +6,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
-import org.jsstl.core.formula.AtomicFormula;
-import org.jsstl.core.formula.EventuallyFormula;
-import org.jsstl.core.formula.EverywhereFormula;
-import org.jsstl.core.formula.GloballyFormula;
-import org.jsstl.core.formula.NotFormula;
-import org.jsstl.core.formula.ParametricExpression;
-import org.jsstl.core.formula.ParametricInterval;
-import org.jsstl.core.formula.Signal;
-import org.jsstl.core.formula.SignalExpression;
-import org.jsstl.core.formula.SomewhereFormula;
-import org.jsstl.core.formula.SurroundFormula;
-import org.jsstl.core.monitor.SpatialBooleanSignal;
-import org.jsstl.core.monitor.SpatialQuantitativeSignal;
-import org.jsstl.core.space.GraphModel;
-import org.jsstl.io.TxtSpatialBoolSat;
-import org.jsstl.io.TxtSpatialQuantSat;
-import org.jsstl.util.signal.BooleanSignal;
-import org.jsstl.util.signal.QuantitativeSignal;
+import eu.quanticol.jsstl.formula.AtomicFormula;
+import eu.quanticol.jsstl.formula.EventuallyFormula;
+import eu.quanticol.jsstl.formula.EverywhereFormula;
+import eu.quanticol.jsstl.formula.GloballyFormula;
+import eu.quanticol.jsstl.formula.NotFormula;
+import eu.quanticol.jsstl.formula.ParametricExpression;
+import eu.quanticol.jsstl.formula.ParametricInterval;
+import eu.quanticol.jsstl.formula.Signal;
+import eu.quanticol.jsstl.formula.SignalExpression;
+import eu.quanticol.jsstl.formula.SomewhereFormula;
+import eu.quanticol.jsstl.formula.SurroundFormula;
+import eu.quanticol.jsstl.monitor.SpatialBooleanSignal;
+import eu.quanticol.jsstl.monitor.SpatialQuantitativeSignal;
+import eu.quanticol.jsstl.space.GraphModel;
+import eu.quanticol.jsstl.io.TxtSpatialBoolSat;
+import eu.quanticol.jsstl.io.TxtSpatialQuantSat;
+import eu.quanticol.jsstl.util.signal.BooleanSignal;
+import eu.quanticol.jsstl.util.signal.QuantitativeSignal;
 
 public class ReactionDiffusionSystem_old {
 

@@ -1,44 +1,20 @@
 package eu.quatincol.jsstl.examples;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Map;
 
-import org.jsstl.core.formula.AtomicFormula;
-import org.jsstl.core.formula.EventuallyFormula;
-import org.jsstl.core.formula.EverywhereFormula;
-import org.jsstl.core.formula.Formula;
-import org.jsstl.core.formula.GloballyFormula;
-import org.jsstl.core.formula.NotFormula;
-import org.jsstl.core.formula.ParametricExpression;
-import org.jsstl.core.formula.ParametricInterval;
-import org.jsstl.core.formula.Signal;
-import org.jsstl.core.formula.SignalExpression;
-import org.jsstl.core.formula.SomewhereFormula;
-import org.jsstl.core.formula.SurroundFormula;
-import org.jsstl.core.formula.jSSTLScript;
-import org.jsstl.core.monitor.SpatialBooleanSignal;
-import org.jsstl.core.monitor.SpatialQuantitativeSignal;
-import org.jsstl.core.space.GraphModel;
-import org.jsstl.io.FolderSignalReader;
-import org.jsstl.io.TxtSpatialBoolSat;
-import org.jsstl.io.TxtSpatialQuantSat;
-import org.jsstl.io.TxtSpatialQuantSignal;
-import org.jsstl.util.signal.BooleanSignal;
-import org.jsstl.util.signal.QuantitativeSignal;
-
+import eu.quanticol.jsstl.formula.Signal;
+import eu.quanticol.jsstl.formula.jSSTLScript;
+import eu.quanticol.jsstl.io.FolderSignalReader;
+import eu.quanticol.jsstl.space.GraphModel;
 import matlabcontrol.MatlabConnectionException;
 import matlabcontrol.MatlabInvocationException;
 import matlabcontrol.MatlabProxy;
 import matlabcontrol.MatlabProxyFactory;
 import matlabcontrol.MatlabProxyFactoryOptions;
 import matlabcontrol.MatlabProxyFactoryOptions.Builder;
-import matlabcontrol.extensions.MatlabNumericArray;
 import matlabcontrol.extensions.MatlabTypeConverter;
 
 public class ReactionDiffusionSystem_Laura {

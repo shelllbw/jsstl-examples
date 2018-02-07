@@ -7,20 +7,20 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 
-import org.jsstl.core.formula.Formula;
-import org.jsstl.core.formula.Signal;
-import org.jsstl.core.formula.SignalStatistics;
-import org.jsstl.core.formula.jSSTLScript;
-import org.jsstl.core.monitor.SpatialBooleanSignal;
-import org.jsstl.core.monitor.SpatialQuantitativeSignal;
-import org.jsstl.core.space.GraphModel;
-import org.jsstl.core.space.Location;
-import org.jsstl.io.FolderSignalReader;
-import org.jsstl.io.TxtSpatialBoolSat;
-import org.jsstl.io.TxtSpatialQuantSat;
-import org.jsstl.io.TxtSpatialQuantSignal;
-import org.jsstl.util.signal.BooleanSignal;
-import org.jsstl.util.signal.QuantitativeSignal;
+import eu.quanticol.jsstl.formula.Formula;
+import eu.quanticol.jsstl.formula.Signal;
+import eu.quanticol.jsstl.formula.SignalStatistics;
+import eu.quanticol.jsstl.formula.jSSTLScript;
+import eu.quanticol.jsstl.monitor.SpatialBooleanSignal;
+import eu.quanticol.jsstl.monitor.SpatialQuantitativeSignal;
+import eu.quanticol.jsstl.space.GraphModel;
+import eu.quanticol.jsstl.space.Location;
+import eu.quanticol.jsstl.io.FolderSignalReader;
+import eu.quanticol.jsstl.io.TxtSpatialBoolSat;
+import eu.quanticol.jsstl.io.TxtSpatialQuantSat;
+import eu.quanticol.jsstl.io.TxtSpatialQuantSignal;
+import eu.quanticol.jsstl.util.signal.BooleanSignal;
+import eu.quanticol.jsstl.util.signal.QuantitativeSignal;
 
 
 import matlabcontrol.MatlabConnectionException;
@@ -67,7 +67,7 @@ public class StochParameterAnalysis {
 		
 		//// SMC
 		int nprop = 1;
-		int runs = 1;
+		int runs = 100;
 		double [] params = new double[1];
 		double h = 0;
 		for (int k=0; k < params.length; k++){

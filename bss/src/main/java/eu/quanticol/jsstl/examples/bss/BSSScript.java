@@ -5,18 +5,20 @@ package eu.quanticol.jsstl.examples.bss;
 
 import java.util.Map;
 
-import org.jsstl.core.formula.AndFormula;
-import org.jsstl.core.formula.AtomicFormula;
-import org.jsstl.core.formula.EventuallyFormula;
-import org.jsstl.core.formula.EverywhereFormula;
-import org.jsstl.core.formula.GloballyFormula;
-import org.jsstl.core.formula.OrFormula;
-import org.jsstl.core.formula.ParametricExpression;
-import org.jsstl.core.formula.ParametricInterval;
-import org.jsstl.core.formula.ReferencedFormula;
-import org.jsstl.core.formula.SignalExpression;
-import org.jsstl.core.formula.SomewhereFormula;
-import org.jsstl.core.formula.jSSTLScript;
+import eu.quanticol.jsstl.formula.AndFormula;
+import eu.quanticol.jsstl.formula.AtomicFormula;
+import eu.quanticol.jsstl.formula.EventuallyFormula;
+import eu.quanticol.jsstl.formula.EverywhereFormula;
+import eu.quanticol.jsstl.formula.GloballyFormula;
+import eu.quanticol.jsstl.formula.NotFormula;
+import eu.quanticol.jsstl.formula.OrFormula;
+import eu.quanticol.jsstl.formula.ParametricExpression;
+import eu.quanticol.jsstl.formula.ParametricInterval;
+import eu.quanticol.jsstl.formula.ReferencedFormula;
+import eu.quanticol.jsstl.formula.SignalExpression;
+import eu.quanticol.jsstl.formula.SomewhereFormula;
+import eu.quanticol.jsstl.formula.SurroundFormula;
+import eu.quanticol.jsstl.formula.jSSTLScript;
 
 /**
  * @author loreti
@@ -248,6 +250,83 @@ public class BSSScript extends jSSTLScript {
 			)		
 			 ,
 			null );
+		addFormula( "phi1bis" ,
+				new GloballyFormula( 
+					new ParametricInterval( 
+						new ParametricExpression() {
+						
+							public SignalExpression eval( final Map<String,Double> parameters ) {
+					
+								return new SignalExpression() {
+									
+									public double eval( double ... variables ) {
+										return 0;
+									}
+									
+								};					
+								
+							}
+							
+						} , 
+						new ParametricExpression() {
+						
+							public SignalExpression eval( final Map<String,Double> parameters ) {
+					
+								return new SignalExpression() {
+									
+									public double eval( double ... variables ) {
+										return Tf_CONST_-parameters.get("tw")-0.1;
+									}
+									
+								};					
+								
+							}
+							
+						} 		
+					)		
+					 ,
+					new EventuallyFormula(
+							new ParametricInterval( 
+									new ParametricExpression() {
+									
+										public SignalExpression eval( final Map<String,Double> parameters ) {
+								
+											return new SignalExpression() {
+												
+												public double eval( double ... variables ) {
+													return 0;
+												}
+												
+											};					
+											
+										}
+										
+									} , 
+									new ParametricExpression() {
+									
+										public SignalExpression eval( final Map<String,Double> parameters ) {
+								
+											return new SignalExpression() {
+												
+												public double eval( double ... variables ) {
+													return parameters.get("tw");
+												}
+												
+											};					
+											
+										}
+										
+									} 		
+								)
+					, 					new ReferencedFormula( 
+							this ,
+							"phid0"
+						)		
+)
+				)		
+				 ,
+				null );		
+		
 		addFormula( "phit0" ,
 			new EventuallyFormula( 
 				new ParametricInterval( 
@@ -514,12 +593,476 @@ public class BSSScript extends jSSTLScript {
 			)		
 			 ,
 			null );
+
+
+		addFormula( "test" , 
+			new GloballyFormula(
+					new ParametricInterval( 
+							new ParametricExpression() {
+						
+								public SignalExpression eval( final Map<String,Double> parameters ) {
+				
+									return new SignalExpression() {
+								
+										public double eval( double ... variables ) {
+											return 0;
+										}
+										
+									};					
+							
+								}
+						
+							}, 
+					new ParametricExpression() {
+					
+						public SignalExpression eval( final Map<String,Double> parameters ) {
+				
+							return new SignalExpression() {
+								
+								public double eval( double ... variables ) {
+									return Tf_CONST_-parameters.get("tw")-0.1;
+								}
+								
+							};					
+							
+						}
+						
+					} 		
+				), new EventuallyFormula(						new ParametricInterval( 
+						new ParametricExpression() {
+						
+							public SignalExpression eval( final Map<String,Double> parameters ) {
+					
+								return new SignalExpression() {
+									
+									public double eval( double ... variables ) {
+										return 0;
+									}
+									
+								};					
+								
+							}
+							
+						} , 
+						new ParametricExpression() {
+						
+							public SignalExpression eval( final Map<String,Double> parameters ) {
+					
+								return new SignalExpression() {
+									
+									public double eval( double ... variables ) {
+										return parameters.get("tw");
+									}
+									
+								};					
+								
+							}
+							
+						} 		
+					), new AtomicFormula( 
+									new ParametricExpression( ) {
+										
+										public SignalExpression eval( Map<String, Double> parameters ) {
+											
+											return new SignalExpression() {						
+														
+												public double eval(double... variables) {
+													return (variables[getIndex(B_VAR_)]);
+												}	
+																	
+											};	
+														
+										}
+									
+									} , 
+									true
+								)	)),
+			null
+		);
+		
+		
+		
+		
+		addFormula( "psi1" , /////CORRECT!
+				new GloballyFormula(				
+						new ParametricInterval( 
+						new ParametricExpression() {
+						
+							public SignalExpression eval( final Map<String,Double> parameters ) {
+					
+								return new SignalExpression() {
+									
+									public double eval( double ... variables ) {
+										return 0;
+									}
+									
+								};					
+								
+							}
+							
+						} , 
+						new ParametricExpression() {
+						
+							public SignalExpression eval( final Map<String,Double> parameters ) {
+					
+								return new SignalExpression() {
+									
+									public double eval( double ... variables ) {
+										return Tf_CONST_;
+									}
+									
+								};					
+								
+							}
+							
+						} 		
+					)	, 
+					new OrFormula( 
+							new NotFormula(									new AtomicFormula( 
+											new ParametricExpression( ) {
+											
+												public SignalExpression eval( Map<String, Double> parameters ) {
+													
+													return new SignalExpression() {						
+																
+														public double eval(double... variables) {
+															return 1-(variables[getIndex(B_VAR_)]);
+														}	
+																			
+													};	
+																
+												}
+											
+											} , 
+											true
+										)		),
+							new SurroundFormula(	
+									new ParametricInterval( 
+										new ParametricExpression() {
+										
+											public SignalExpression eval( final Map<String,Double> parameters ) {
+									
+												return new SignalExpression() {
+													
+													public double eval( double ... variables ) {
+														return 0;
+													}
+													
+												};					
+												
+											}
+											
+										} , 
+										new ParametricExpression() {
+										
+											public SignalExpression eval( final Map<String,Double> parameters ) {
+									
+												return new SignalExpression() {
+													
+													public double eval( double ... variables ) {
+														return parameters.get("dw");
+													}
+													
+												};					
+												
+											}
+											
+										} 		
+									)		
+									, 
+									new AtomicFormula( 
+											new ParametricExpression( ) {
+											
+												public SignalExpression eval( Map<String, Double> parameters ) {
+													
+													return new SignalExpression() {						
+																
+														public double eval(double... variables) {
+															return 1-(variables[getIndex(B_VAR_)]);
+														}	
+																			
+													};	
+																
+												}
+											
+											} , 
+											true
+										)		
+									, 			new AtomicFormula( 
+											new ParametricExpression( ) {
+												
+												public SignalExpression eval( Map<String, Double> parameters ) {
+													
+													return new SignalExpression() {						
+																
+														public double eval(double... variables) {
+															return (variables[getIndex(B_VAR_)]);
+														}	
+																			
+													};	
+																
+												}
+											
+											} , 
+											true
+										)		
+									)														
+					)
+
+					)
+//				new SomewhereFormula( 
+//					new ParametricInterval( 
+//						new ParametricExpression() {
+//						
+//							public SignalExpression eval( final Map<String,Double> parameters ) {
+//					
+//								return new SignalExpression() {
+//									
+//									public double eval( double ... variables ) {
+//										return 0;
+//									}
+//									
+//								};					
+//								
+//							}
+//							
+//						} , 
+//						new ParametricExpression() {
+//						
+//							public SignalExpression eval( final Map<String,Double> parameters ) {
+//					
+//								return new SignalExpression() {
+//									
+//									public double eval( double ... variables ) {
+//										return parameters.get("d");
+//									}
+//									
+//								};					
+//								
+//							}
+//							
+//						} 		
+//					)		
+//					 ,
+//					new ReferencedFormula( 
+//						this ,
+//						"phiB"
+//					)		
+//				)		
+				 ,
+				null );				
+
+		addFormula( "psi2" ,
+				new GloballyFormula(				
+						new ParametricInterval( 
+						new ParametricExpression() {
+						
+							public SignalExpression eval( final Map<String,Double> parameters ) {
+					
+								return new SignalExpression() {
+									
+									public double eval( double ... variables ) {
+										return 0;
+									}
+									
+								};					
+								
+							}
+							
+						} , 
+						new ParametricExpression() {
+						
+							public SignalExpression eval( final Map<String,Double> parameters ) {
+					
+								return new SignalExpression() {
+									
+									public double eval( double ... variables ) {
+										return Tf_CONST_-parameters.get("tw")-0.1;
+									}
+									
+								};					
+								
+							}
+							
+						} 		
+					)	, 
+						new OrFormula( 
+								new NotFormula(									new AtomicFormula( 
+												new ParametricExpression( ) {
+												
+													public SignalExpression eval( Map<String, Double> parameters ) {
+														
+														return new SignalExpression() {						
+																	
+															public double eval(double... variables) {
+																return 1-(variables[getIndex(B_VAR_)]);
+															}	
+																				
+														};	
+																	
+													}
+												
+												} , 
+												true
+											)		),
+					new SurroundFormula(	
+							new ParametricInterval( 
+								new ParametricExpression() {
+								
+									public SignalExpression eval( final Map<String,Double> parameters ) {
+							
+										return new SignalExpression() {
+											
+											public double eval( double ... variables ) {
+												return 0;
+											}
+											
+										};					
+										
+									}
+									
+								} , 
+								new ParametricExpression() {
+								
+									public SignalExpression eval( final Map<String,Double> parameters ) {
+							
+										return new SignalExpression() {
+											
+											public double eval( double ... variables ) {
+												return parameters.get("dw");
+											}
+											
+										};					
+										
+									}
+									
+								} 		
+							)		
+							, 
+							
+							new AtomicFormula( 
+									new ParametricExpression( ) {
+									
+										public SignalExpression eval( Map<String, Double> parameters ) {
+											
+											return new SignalExpression() {						
+														
+												public double eval(double... variables) {
+													return 1-(variables[getIndex(B_VAR_)]);
+												}	
+																	
+											};	
+														
+										}
+									
+									} , 
+									true
+								)		
+							, 			
+							new EventuallyFormula(						new ParametricInterval( 
+						new ParametricExpression() {
+						
+							public SignalExpression eval( final Map<String,Double> parameters ) {
+					
+								return new SignalExpression() {
+									
+									public double eval( double ... variables ) {
+										return 5;
+									}
+									
+								};					
+								
+							}
+							
+						} , 
+						new ParametricExpression() {
+						
+							public SignalExpression eval( final Map<String,Double> parameters ) {
+					
+								return new SignalExpression() {
+									
+									public double eval( double ... variables ) {
+										return parameters.get("tw");
+									}
+									
+								};					
+								
+							}
+							
+						} 		
+					), new AtomicFormula( 
+									new ParametricExpression( ) {
+										
+										public SignalExpression eval( Map<String, Double> parameters ) {
+											
+											return new SignalExpression() {						
+														
+												public double eval(double... variables) {
+													return (variables[getIndex(B_VAR_)]);
+												}	
+																	
+											};	
+														
+										}
+									
+									} , 
+									true
+								)	)
+								)
+					))
+//				new SomewhereFormula( 
+//					new ParametricInterval( 
+//						new ParametricExpression() {
+//						
+//							public SignalExpression eval( final Map<String,Double> parameters ) {
+//					
+//								return new SignalExpression() {
+//									
+//									public double eval( double ... variables ) {
+//										return 0;
+//									}
+//									
+//								};					
+//								
+//							}
+//							
+//						} , 
+//						new ParametricExpression() {
+//						
+//							public SignalExpression eval( final Map<String,Double> parameters ) {
+//					
+//								return new SignalExpression() {
+//									
+//									public double eval( double ... variables ) {
+//										return parameters.get("d");
+//									}
+//									
+//								};					
+//								
+//							}
+//							
+//						} 		
+//					)		
+//					 ,
+//					new ReferencedFormula( 
+//						this ,
+//						"phiB"
+//					)		
+//				)		
+				 ,
+				null );				
 		addParameter( "t" , 
 			(double) 0 , 
 			(double) 11 );
 		addParameter( "d" , 
 			(double) 0 , 
 			(double) 1.5 );
+		addParameter( "dw" , 
+				(double) 0 , 
+				(double) 3 );
+		addParameter( "tw" , 
+				(double) 0 , 
+				(double) 20 );
 	}
 	
 }

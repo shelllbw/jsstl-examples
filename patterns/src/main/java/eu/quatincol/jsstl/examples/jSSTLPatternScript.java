@@ -3,8 +3,8 @@
  */
 package eu.quatincol.jsstl.examples;
 
-import org.jsstl.core.formula.jSSTLScript;
-import org.jsstl.core.formula.*;
+import eu.quanticol.jsstl.formula.jSSTLScript;
+import eu.quanticol.jsstl.formula.*;
 import java.util.Map;		
 
 /**
