@@ -1,5 +1,5 @@
 # jSSTL Case Studies
-This repository contains some of examples of use of [jSSTL](https://github.com/Quanticol/jsstl/). A detailed description of the case studies is available [here](https://arxiv.org/abs/1706.09334). To run the examples you have first to install jSST (see the instructions available [here](https://github.com/Quanticol/jsstl/blob/master/README.md).
+This repository contains some of examples of use of [jSSTL](https://github.com/Quanticol/jsstl/). A detailed description of the case studies is available [here](https://arxiv.org/abs/1706.09334). To run the examples you have first to install jSSTL API (see the instructions available [here](https://github.com/Quanticol/jsstl/blob/master/README.md).
 
 After that you can download the jsst-example folder either by cloning the repository:
 
@@ -9,9 +9,11 @@ git clone https://github.com/Quanticol/jsstl-examples.git
 
 Or by downloading the [zip archive](https://github.com/Quanticol/jsstl-examples/archive/master.zip).
 
-Inside the dowloaded floder you will find two directorie:
+Inside the dowloaded floder you will find two directories:
 - 'pattern': with the code that can be used for studying Turing patters;
 - 'bss': with the code for analysing a Bike Sharing System. 
+
+Below detailed instructions to build and run these experiments are provided.
 
 ## Studying Turing patters with jSSTL.
 
@@ -22,6 +24,11 @@ Alan Turing [conjectured](http://www.jstor.org/stable/92463?seq=1#page_scan_tab_
 From the point of view of formal verification, the formation of patterns is an inherently spatio-temporal phenomenon, in that the relevant issue is how the spatial organisation of the system changes over time.
 
 ### Building the classes
+To build the this classes open a console and enter in the directory 'jsst-examples/patters'. After that use Maven to build the required classes:
+
+'''
+mvn clean verify
+'''
 
 ### Running the experiments.
 
