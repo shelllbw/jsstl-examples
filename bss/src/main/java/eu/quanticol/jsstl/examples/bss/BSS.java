@@ -48,14 +48,6 @@ public class BSS {
 		System.out.println("psi1: "+t4);
 		System.out.println("psi2: "+t5);
 		System.out.println("DM Computation: "+dmtime);
-//		System.out.println("Par phi1/phi2");
-//		System.out.println(getPhi_1_and_2_Params(11));
-//		System.out.println("\n\nPar phi3");
-//		System.out.println(getPsiParams(5,0.0,0.5,2.5,5));
-//		System.out.println("\n\nPar psi1");
-//		System.out.println(getPhi1BisParams(11));
-//		System.out.println("\n\nPar psi3");
-//		System.out.println(getPsiParams(5,0.0,0.5,2.5,5));
 
 	}
 	
