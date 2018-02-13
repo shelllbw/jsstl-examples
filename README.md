@@ -24,13 +24,22 @@ Alan Turing [conjectured](http://www.jstor.org/stable/92463?seq=1#page_scan_tab_
 From the point of view of formal verification, the formation of patterns is an inherently spatio-temporal phenomenon, in that the relevant issue is how the spatial organisation of the system changes over time.
 
 ### Building the classes
-To build the this classes open a console and enter in the directory 'jsst-examples/patters'. After that use Maven to build the required classes:
+To build the this classes open a console and enter in the directory ```jsst-examples/patters```. After that use Maven to build the required classes:
 
 ```
 mvn clean verify
 ```
 
 ### Running the experiments.
+When the building process is finisched enter in the directory ```target``` and executes the following commands:
+
+```
+java -cp patterns-1.0-SNAPSHOT-jar-with-dependencies.jar  eu.quatincol.jsstl.examples.ReactionDiffusionSystem
+```
+
+```
+java -cp patterns-1.0-SNAPSHOT-jar-with-dependencies.jar  eu.quatincol.jsstl.examples.StochParameterAnalysis
+```
 
 
 ## Bike Sharing System
