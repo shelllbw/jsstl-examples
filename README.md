@@ -3,9 +3,9 @@ This repository contains some of examples of use of [jSSTL](https://github.com/Q
 
 After that you can download the jsst-example folder either by cloning the repository:
 
-'''
+```
 git clone https://github.com/Quanticol/jsstl-examples.git
-'''
+```
 
 Or by downloading the [zip archive](https://github.com/Quanticol/jsstl-examples/archive/master.zip).
 
@@ -26,9 +26,9 @@ From the point of view of formal verification, the formation of patterns is an i
 ### Building the classes
 To build the this classes open a console and enter in the directory 'jsst-examples/patters'. After that use Maven to build the required classes:
 
-'''
+```
 mvn clean verify
-'''
+```
 
 ### Running the experiments.
 
