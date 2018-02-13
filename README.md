@@ -13,7 +13,7 @@ Inside the dowloaded floder you will find two directories:
 - 'pattern': with the code that can be used for studying Turing patters;
 - 'bss': with the code for analysing a Bike Sharing System. 
 
-Below detailed instructions to build and run these experiments are provided.
+Below detailed instructions to build and run these experiments are provided. Note that to perform some of the alayses MatLab must be installed in your system.   
 
 ## Studying Turing patters with jSSTL.
 
