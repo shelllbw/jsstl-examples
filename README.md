@@ -31,17 +31,17 @@ mvn clean verify
 ```
 
 ### Running the experiments.
-When the building process is finisched enter in the directory ```target``` and executes the following commands:
+When the building process is finisched in the directory ```jsst-examples/patters``` and executes the following commands:
 
 ```
-java -cp patterns-1.0-SNAPSHOT-jar-with-dependencies.jar  eu.quatincol.jsstl.examples.ReactionDiffusionSystem ../data
+sh runReactionDiffusion.sh
 ```
 
 ```
-java -cp patterns-1.0-SNAPSHOT-jar-with-dependencies.jar  eu.quatincol.jsstl.examples.StochParameterAnalysis ../data
+sh runStocParameterAnalysis.sh
 ```
 
-In both the cases MatLab is used to generate trajectoris. For this reason, it must be installed in your system. 
+In both the cases MatLab is used to generate trajectories. For this reason, it must be installed in your system. 
 
 ## Bike Sharing System
 This example shows how jSSTL can be used to perform analysis of the London Santander Cycles Hire scheme. This is a bike sharing system, modelled  as a *Population Continuous Time Markov Chain* (PCTMC) with time-dependent rates. We use jSSTL to study a number of spatio-temporal properties of the system and to explore their robustness considering a set of parameter values for the formulas. 
@@ -55,15 +55,15 @@ mvn clean verify
 ```
 
 ### Running the experiments.
-To run the experiments you have first dowload the archive with the trajectories from this [link](http://bit.ly/2EpsAId) and save it in your system and expand the archive.
+To run the experiments you have first dowload the archive with the trajectories from this [link](http://bit.ly/2EpsAId) and unarchive it on the folder ```jsstl-examples/bss/models```. At the end of the process you should have a folder ```jsstl-examples/bss/models/trajectoris``` with files ```trajN.txt```.
 
 After that enter in the directory ```jsst-examples/bss/target``` and executes the following commands:
 
 ```
-java -cp patterns-1.0-SNAPSHOT-jar-with-dependencies.jar  eu.quatincol.jsstl.examples.BSS ../models/bssSpatialModel.tra <trajdir>
+sh runBss
 ```
 
-where ```<trajdir>``` is the path to the folder containing the trajectories file you have downloaded above.
+
 
 
 
