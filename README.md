@@ -34,26 +34,37 @@ mvn clean verify
 When the building process is finisched enter in the directory ```target``` and executes the following commands:
 
 ```
-java -cp patterns-1.0-SNAPSHOT-jar-with-dependencies.jar  eu.quatincol.jsstl.examples.ReactionDiffusionSystem
+java -cp patterns-1.0-SNAPSHOT-jar-with-dependencies.jar  eu.quatincol.jsstl.examples.ReactionDiffusionSystem ../data
 ```
 
 ```
-java -cp patterns-1.0-SNAPSHOT-jar-with-dependencies.jar  eu.quatincol.jsstl.examples.StochParameterAnalysis
+java -cp patterns-1.0-SNAPSHOT-jar-with-dependencies.jar  eu.quatincol.jsstl.examples.StochParameterAnalysis ../data
 ```
 
+In both the cases MatLab is used to generate trajectoris. For this reason, it must be installed in your system. 
 
 ## Bike Sharing System
 This example shows how jSSTL can be used to perform analysis of the London Santander Cycles Hire scheme. This is a bike sharing system, modelled  as a *Population Continuous Time Markov Chain* (PCTMC) with time-dependent rates. We use jSSTL to study a number of spatio-temporal properties of the system and to explore their robustness considering a set of parameter values for the formulas. 
 
 
 ### Building the classes
+To build the this classes open a console and enter in the directory ```jsst-examples/bss```. After that use Maven to build the required classes:
+
+```
+mvn clean verify
+```
 
 ### Running the experiments.
+To run the experiments you have first dowload the archive with the trajectories from this [link](http://bit.ly/2EpsAId) and save it in your system and expand the archive.
 
-After that you have to clone the '''jsstl-examples''' project. 
+After that enter in the directory ```jsst-examples/bss/target``` and executes the following commands:
 
+```
+java -cp patterns-1.0-SNAPSHOT-jar-with-dependencies.jar  eu.quatincol.jsstl.examples.BSS ../models/bssSpatialModel.tra <trajdir>
+```
 
-Dowload trajectories from this [link](http://bit.ly/2EpsAId)
+where ```<trajdir>``` is the path to the folder containing the trajectories file you have downloaded above.
+
 
 
 
