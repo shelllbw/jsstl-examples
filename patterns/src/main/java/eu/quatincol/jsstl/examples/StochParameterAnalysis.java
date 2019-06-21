@@ -7,20 +7,20 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 
-import eu.quanticol.jsstl.formula.Formula;
-import eu.quanticol.jsstl.formula.Signal;
-import eu.quanticol.jsstl.formula.SignalStatistics;
-import eu.quanticol.jsstl.formula.jSSTLScript;
-import eu.quanticol.jsstl.monitor.SpatialBooleanSignal;
-import eu.quanticol.jsstl.monitor.SpatialQuantitativeSignal;
-import eu.quanticol.jsstl.space.GraphModel;
-import eu.quanticol.jsstl.space.Location;
-import eu.quanticol.jsstl.io.FolderSignalReader;
-import eu.quanticol.jsstl.io.TxtSpatialBoolSat;
-import eu.quanticol.jsstl.io.TxtSpatialQuantSat;
-import eu.quanticol.jsstl.io.TxtSpatialQuantSignal;
-import eu.quanticol.jsstl.util.signal.BooleanSignal;
-import eu.quanticol.jsstl.util.signal.QuantitativeSignal;
+import eu.quanticol.jsstl.core.formula.Formula;
+import eu.quanticol.jsstl.core.formula.Signal;
+import eu.quanticol.jsstl.core.formula.SignalStatistics;
+import eu.quanticol.jsstl.core.formula.jSSTLScript;
+import eu.quanticol.jsstl.core.monitor.SpatialBooleanSignal;
+import eu.quanticol.jsstl.core.monitor.SpatialQuantitativeSignal;
+import eu.quanticol.jsstl.core.space.GraphModel;
+import eu.quanticol.jsstl.core.space.Location;
+import eu.quanticol.jsstl.core.io.FolderSignalReader;
+import eu.quanticol.jsstl.core.io.TxtSpatialBoolSat;
+import eu.quanticol.jsstl.core.io.TxtSpatialQuantSat;
+import eu.quanticol.jsstl.core.io.TxtSpatialQuantSignal;
+import eu.quanticol.jsstl.core.signal.BooleanSignal;
+import eu.quanticol.jsstl.core.signal.QuantitativeSignal;
 
 
 import matlabcontrol.MatlabConnectionException;

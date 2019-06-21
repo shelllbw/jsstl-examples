@@ -5,20 +5,20 @@ package eu.quanticol.jsstl.examples.bss;
 
 import java.util.Map;
 
-import eu.quanticol.jsstl.formula.AndFormula;
-import eu.quanticol.jsstl.formula.AtomicFormula;
-import eu.quanticol.jsstl.formula.EventuallyFormula;
-import eu.quanticol.jsstl.formula.EverywhereFormula;
-import eu.quanticol.jsstl.formula.GloballyFormula;
-import eu.quanticol.jsstl.formula.NotFormula;
-import eu.quanticol.jsstl.formula.OrFormula;
-import eu.quanticol.jsstl.formula.ParametricExpression;
-import eu.quanticol.jsstl.formula.ParametricInterval;
-import eu.quanticol.jsstl.formula.ReferencedFormula;
-import eu.quanticol.jsstl.formula.SignalExpression;
-import eu.quanticol.jsstl.formula.SomewhereFormula;
-import eu.quanticol.jsstl.formula.SurroundFormula;
-import eu.quanticol.jsstl.formula.jSSTLScript;
+import eu.quanticol.jsstl.core.formula.AndFormula;
+import eu.quanticol.jsstl.core.formula.AtomicFormula;
+import eu.quanticol.jsstl.core.formula.EventuallyFormula;
+import eu.quanticol.jsstl.core.formula.EverywhereFormula;
+import eu.quanticol.jsstl.core.formula.GloballyFormula;
+import eu.quanticol.jsstl.core.formula.NotFormula;
+import eu.quanticol.jsstl.core.formula.OrFormula;
+import eu.quanticol.jsstl.core.formula.ParametricExpression;
+import eu.quanticol.jsstl.core.formula.ParametricInterval;
+import eu.quanticol.jsstl.core.formula.ReferencedFormula;
+import eu.quanticol.jsstl.core.formula.SignalExpression;
+import eu.quanticol.jsstl.core.formula.SomewhereFormula;
+import eu.quanticol.jsstl.core.formula.SurroundFormula;
+import eu.quanticol.jsstl.core.formula.jSSTLScript;
 
 /**
  * @author loreti

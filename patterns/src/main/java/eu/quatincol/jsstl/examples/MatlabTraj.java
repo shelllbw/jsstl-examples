@@ -1,7 +1,7 @@
 package eu.quatincol.jsstl.examples;
 
-import eu.quanticol.jsstl.formula.Signal;
-import eu.quanticol.jsstl.space.GraphModel;
+import eu.quanticol.jsstl.core.formula.Signal;
+import eu.quanticol.jsstl.core.space.GraphModel;
 
 public class MatlabTraj {
 		

@@ -10,12 +10,12 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Locale;
 
-import eu.quanticol.jsstl.dsl.ScriptLoader;
-import eu.quanticol.jsstl.formula.Signal;
-import eu.quanticol.jsstl.formula.SignalStatistics;
-import eu.quanticol.jsstl.formula.jSSTLScript;
-import eu.quanticol.jsstl.space.GraphModel;
-import eu.quanticol.jsstl.io.TraGraphModelReader;
+//import eu.quanticol.jsstl.core.dsl.ScriptLoader;
+import eu.quanticol.jsstl.core.formula.Signal;
+import eu.quanticol.jsstl.core.formula.SignalStatistics;
+import eu.quanticol.jsstl.core.formula.jSSTLScript;
+import eu.quanticol.jsstl.core.space.GraphModel;
+import eu.quanticol.jsstl.core.io.TraGraphModelReader;
 
 public class BSS {
 

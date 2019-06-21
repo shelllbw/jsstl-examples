@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import eu.quanticol.jsstl.formula.Signal;
-import eu.quanticol.jsstl.formula.jSSTLScript;
-import eu.quanticol.jsstl.io.FolderSignalReader;
-import eu.quanticol.jsstl.space.GraphModel;
+import eu.quanticol.jsstl.core.formula.Signal;
+import eu.quanticol.jsstl.core.formula.jSSTLScript;
+import eu.quanticol.jsstl.core.io.FolderSignalReader;
+import eu.quanticol.jsstl.core.space.GraphModel;
 import matlabcontrol.MatlabConnectionException;
 import matlabcontrol.MatlabInvocationException;
 import matlabcontrol.MatlabProxy;
