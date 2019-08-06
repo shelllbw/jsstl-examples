@@ -25,7 +25,7 @@ public class IBM {
 		long start = System.currentTimeMillis();
 
 		System.out.println("Compute shortest path...");
-		graph.dMSurfacecomputation();
+		//graph.dMSurfacecomputation();
 		double dmtime = (System.currentTimeMillis()-start)/1000.0;
 		System.out.println("DM Computation: "+dmtime);
 		int runs = 1;

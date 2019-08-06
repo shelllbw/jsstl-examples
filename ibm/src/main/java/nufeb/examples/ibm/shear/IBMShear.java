@@ -10,14 +10,12 @@ import java.util.HashMap;
 
 
 
-import nufeb.examples.ibm.IBMScript;
+import nufeb.examples.ibm.shear.IBMShearScript;
 //import eu.quanticol.jsstl.core.dsl.ScriptLoader;
 import eu.quanticol.jsstl.core.formula.Signal;
 import eu.quanticol.jsstl.core.formula.jSSTLScript;
-import eu.quanticol.jsstl.core.signal.BooleanSignal;
 import eu.quanticol.jsstl.core.space.GraphModel;
 import eu.quanticol.jsstl.core.io.TraGraphModelReader;
-import eu.quanticol.jsstl.core.monitor.SpatialBooleanSignal;
 
 public class IBMShear {
 
@@ -28,7 +26,7 @@ public class IBMShear {
 		long start = System.currentTimeMillis();
 
 		System.out.println("Compute shortest path...");
-		graph.dMSurfacecomputation();
+		//graph.dMcomputation();
 		double dmtime = (System.currentTimeMillis()-start)/1000.0;
 		System.out.println("DM Computation: "+dmtime);
 
@@ -44,28 +42,35 @@ public class IBMShear {
 
 	private static ArrayList<HashMap<String, Double>> getShearParams() {
 		ArrayList<HashMap<String, Double>> toReturn = new ArrayList<>();
-
-		for (double i = 176400; i < 540000; i = i + 172800) {
+		double pre = 0;
+		for (double i = 0; i < 540000; i = i + 172800) {
 			// short distance
 			HashMap<String,Double> map1 = new HashMap<>();
+			map1.put("minT", pre);
 			map1.put("maxT", i);
 			map1.put("fromX", 1e-4);
-			map1.put("toX", 1.05e-4);
+			map1.put("toX", 1.034e-4);
 			toReturn.add(map1);
 			// mid distance
 			HashMap<String,Double> map2 = new HashMap<>();
+			map2.put("minT", pre);
 			map2.put("maxT", i);
-			map2.put("fromX", 1.5e-4);
-			map2.put("toX", 1.55e-4);
+			map2.put("fromX", 1.4e-4);
+			map2.put("toX", 1.434e-4);
 			toReturn.add(map2);
 			// long distance
 			HashMap<String,Double> map3 = new HashMap<>();
+			map3.put("minT", pre);
 			map3.put("maxT", i);
-			map3.put("fromX", 1.95e-4);
-			map3.put("toX", 2e-4);
+			map3.put("fromX", 1.8e-4);
+			map3.put("toX", 1.834e-4);
 			toReturn.add(map3);
+			
+			if(i != 0) {
+				pre = i - 172800;
+			}
 		}
-		
+
 		return toReturn;
 	}
 
@@ -86,7 +91,7 @@ public class IBMShear {
 		System.out.println("timeSize: "+timeSize);
 		int locSize = graph.getNumberOfLocations();
 		System.out.println("locSize: "+locSize);
-		double[][][] data = new double[locSize][timeSize][2];
+		double[][][] data = new double[locSize][timeSize][1];
 		double[] time = new double[timeSize];
 		
 		for (int t = 0; t < timeSize; t++) {
@@ -119,20 +124,26 @@ public class IBMShear {
 			HashMap<String,Double> parValues = params.get(i);
 			
 			PrintWriter stprinter = new PrintWriter("data/"+"t" +parValues.get("maxT") + "-x" + + parValues.get("fromX") +".txt");
-			//PrintWriter stprinter = new PrintWriter("data/test.txt");
 			
 			//Signal s = readMeshTraj(graph, "models/trajectories/test/test.txt");
 
-			double[] boolSat = script.booleanSat("streamer-formation", parValues, graph, s);
-			double[] boolSat1 = script.booleanSat("streamer-bound", parValues, graph, s1);
+			double[] boolSat1 = script.booleanSat("streamer-formation", parValues, graph, s);
+			double[] boolSat2 = script.booleanSat("detachment", parValues, graph, s);
+			double[] boolSat3 = script.booleanSat("grid-bound", parValues, graph, s1);
 			
 			System.out.println("checking : " + parValues.get("maxT") + "-x" + + parValues.get("fromX"));
 			
-			for (int j = 0; j < graph.getNumberOfLocations(); j++) {			
-				if(boolSat[j] > 0 && boolSat1[j] > 0)
-					stprinter.println(graph.getLocation(j)+ "," + 1);
-				else if (boolSat[j] == 0 && boolSat1[j] > 0)
-					stprinter.println(graph.getLocation(j)+ "," + 0);
+			for (int j = 0; j < graph.getNumberOfLocations(); j++) {
+				if(boolSat1[j] > 0 && boolSat2[j] > 0 && boolSat3[j] > 0)
+					stprinter.println(1.0);
+				else if (boolSat1[j] > 0 && boolSat2[j] ==  0 && boolSat3[j] > 0)
+					stprinter.println(1.0);
+				else if (boolSat1[j] == 0 && boolSat2[j] >  0 && boolSat3[j] > 0)
+					stprinter.println(2.0);
+				else if (boolSat1[j] == 0 && boolSat2[j] ==  0 && boolSat3[j] > 0)
+					stprinter.println(3.0);
+				else
+					stprinter.println(0);
 			}
 			
 			stprinter.close();

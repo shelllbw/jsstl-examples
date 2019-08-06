@@ -32,7 +32,7 @@ public class IBMShearScript extends jSSTLScript {
 			}
 		);	
 		
-		// streamer formation (GridX > fromX && GridX < toX) && (F[O, maxT]G[0, maxT] VF > 0)
+		// streamer formation F[O, maxT]G[0, 10h] VF > 0
 		addFormula( "streamer-global" ,
 				new GloballyFormula( 
 						new ParametricInterval( 
@@ -58,7 +58,7 @@ public class IBMShearScript extends jSSTLScript {
 									return new SignalExpression() {
 										
 										public double eval( double ... variables ) {
-											return 18000;
+											return 72000 ;
 										}
 										
 									};					
@@ -95,7 +95,7 @@ public class IBMShearScript extends jSSTLScript {
 									return new SignalExpression() {
 										
 										public double eval( double ... variables ) {
-											return 0;
+											return parameters.get("minT");
 										}
 										
 									};					
@@ -127,7 +127,128 @@ public class IBMShearScript extends jSSTLScript {
 					),
 		null );
 		
-		addFormula( "streamer-bound" ,
+		// detachment
+		
+		addFormula( "detach-find" ,
+				new EventuallyFormula( 
+						new ParametricInterval( 
+							new ParametricExpression() {
+							
+								public SignalExpression eval( final Map<String,Double> parameters ) {
+						
+									return new SignalExpression() {
+										
+										public double eval( double ... variables ) {
+											return 0;
+										}
+										
+									};					
+									
+								}
+								
+							} , 
+							new ParametricExpression() {
+							
+								public SignalExpression eval( final Map<String,Double> parameters ) {
+						
+									return new SignalExpression() {
+										
+										public double eval( double ... variables ) {
+											//System.out.println("maxT " + parameters.get("maxT"));
+											return 7200;
+										}
+										
+									};					
+									
+								}
+								
+							} 		
+						),
+						new AtomicFormula( 
+								new ParametricExpression( ) {
+								
+									public SignalExpression eval( Map<String, Double> parameters ) {
+										
+										return new SignalExpression() {						
+													
+											public double eval(double... variables) {
+												return 0.005 - variables[getIndex(VF_VAR_)];
+											}									
+										};													
+									}							
+								} , 
+						true
+						)	
+					),
+		null );
+		
+		addFormula( "detach-and" ,
+			new AndFormula(
+					new AtomicFormula( 
+							new ParametricExpression( ) {
+							
+								public SignalExpression eval( Map<String, Double> parameters ) {
+									
+									return new SignalExpression() {						
+												
+										public double eval(double... variables) {
+											return variables[getIndex(VF_VAR_)];
+										}									
+									};													
+								}							
+							} , 
+					true
+					),
+					new ReferencedFormula( 
+							this ,
+							"detach-find"
+					)
+			),
+		null );
+		
+		addFormula( "detachment" ,
+				new EventuallyFormula( 
+						new ParametricInterval( 
+							new ParametricExpression() {
+							
+								public SignalExpression eval( final Map<String,Double> parameters ) {
+						
+									return new SignalExpression() {
+										
+										public double eval( double ... variables ) {
+											return parameters.get("minT");
+										}
+										
+									};					
+									
+								}
+								
+							} , 
+							new ParametricExpression() {
+							
+								public SignalExpression eval( final Map<String,Double> parameters ) {
+						
+									return new SignalExpression() {
+										
+										public double eval( double ... variables ) {
+											return parameters.get("maxT");
+										}
+										
+									};					
+									
+								}
+								
+							} 		
+						),
+						new ReferencedFormula( 
+								this ,
+								"detach-and"
+						)	
+					),
+		null );
+		
+		// grid bound GridX > fromX && GridX < toX
+		addFormula( "grid-bound" ,
 				new GloballyFormula( 
 						new ParametricInterval( 
 							new ParametricExpression() {
@@ -170,7 +291,7 @@ public class IBMShearScript extends jSSTLScript {
 												return new SignalExpression() {						
 															
 													public double eval(double... variables) {
-														return variables[getIndex(VF_VAR_)] - parameters.get("fromX");
+														return variables[getIndex(gridX_VAR_)] - parameters.get("fromX");
 													}	
 																		
 												};	
@@ -188,7 +309,7 @@ public class IBMShearScript extends jSSTLScript {
 												return new SignalExpression() {						
 															
 													public double eval(double... variables) {
-														return  parameters.get("toX") - variables[getIndex(VF_VAR_)];
+														return  parameters.get("toX") - variables[getIndex(gridX_VAR_)];
 													}	
 																		
 												};	
