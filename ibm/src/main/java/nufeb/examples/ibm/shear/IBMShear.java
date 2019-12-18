@@ -26,7 +26,7 @@ public class IBMShear {
 		long start = System.currentTimeMillis();
 
 		System.out.println("Compute shortest path...");
-		//graph.dMcomputation();
+		graph.dMSurfacecomputation();
 		double dmtime = (System.currentTimeMillis()-start)/1000.0;
 		System.out.println("DM Computation: "+dmtime);
 
@@ -133,18 +133,31 @@ public class IBMShear {
 			
 			System.out.println("checking : " + parValues.get("maxT") + "-x" + + parValues.get("fromX"));
 			
+			int nstreamer = 0;
+			int ndetach = 0;
+			
 			for (int j = 0; j < graph.getNumberOfLocations(); j++) {
-				if(boolSat1[j] > 0 && boolSat2[j] > 0 && boolSat3[j] > 0)
+				if(boolSat1[j] > 0 && boolSat2[j] > 0 && boolSat3[j] > 0) {
 					stprinter.println(1.0);
-				else if (boolSat1[j] > 0 && boolSat2[j] ==  0 && boolSat3[j] > 0)
+					nstreamer++;
+					ndetach++;
+				}
+				else if (boolSat1[j] > 0 && boolSat2[j] ==  0 && boolSat3[j] > 0){
 					stprinter.println(1.0);
-				else if (boolSat1[j] == 0 && boolSat2[j] >  0 && boolSat3[j] > 0)
+					nstreamer++;
+				}
+				else if (boolSat1[j] == 0 && boolSat2[j] >  0 && boolSat3[j] > 0) {
 					stprinter.println(2.0);
+					ndetach++;
+				}
 				else if (boolSat1[j] == 0 && boolSat2[j] ==  0 && boolSat3[j] > 0)
 					stprinter.println(3.0);
 				else
 					stprinter.println(0);
 			}
+			
+			System.out.println("nstreamer = " + nstreamer);
+			System.out.println("ndetach = " + ndetach);
 			
 			stprinter.close();
 		}
